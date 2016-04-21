@@ -53,3 +53,10 @@ $(SAMPLE_LIB): $(SAMPLE_LIB_OBJ)
 $(SAMPLES): $(SAMPLE_LIB)
 $(SAMPLES): %: %.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -lthf -lm $(LIBS)
+
+install:
+	mkdir -p $(DESTDIR)
+	cp -a SpheroSpeech/spheroSpeech $(DESTDIR)
+	chmod a+x $(DESTDIR)/spheroSpeech
+	cp -a SpheroSpeech/*.raw $(DESTDIR)/
+
