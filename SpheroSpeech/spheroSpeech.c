@@ -26,8 +26,10 @@
 #define PHRASESPOT_PARAMA_OFFSET   (0)        /* Phrasespotting ParamA Offset */
 #define PHRASESPOT_BEAM    (100.f)            /* Pruning beam */
 #define PHRASESPOT_ABSBEAM (100.f)            /* Pruning absolute beam */
-#define PHRASESPOT_DELAY  15                 /* Phrasespotting Delay */
+#define PHRASESPOT_DELAY  90                 /* Phrasespotting Delay */
 #define MAXSTR             (512)              /* Output string size */
+
+#define SEQ_BUFFER_MS     1000
 
 #define THROW(a) { ewhere=(a); goto error; }
 #define THROW2(a,b) {ewhere=(a); ewhat=(b); goto error; }
@@ -143,6 +145,10 @@ int main(int argc, char **argv)
   delay=PHRASESPOT_DELAY;
   if (!thfPhrasespotConfigSet(ses,r,s,PS_DELAY,delay))
     THROW("thfPhrasespotConfigSet: delay");
+
+  // One second sequential buffer
+  if (!thfPhrasespotConfigSet(ses, r, s, PS_SEQ_BUFFER, SEQ_BUFFER_MS))
+    THROW("thfPhrasespotConfigSet:trigger:PS_SEQ_BUFFER");
 
   if (thfRecogGetSampleRate(ses,r) != SAMPLERATE)
     THROW("Acoustic model is incompatible with audio samplerate");
