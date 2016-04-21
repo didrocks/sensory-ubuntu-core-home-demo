@@ -1,0 +1,17 @@
+name: sphero-speech
+version: 0.42
+summary: test sphero speech demo
+vendor: didrocks@ubuntu.com
+description: Test for sensory sphero speech demo demo
+icon: icon.png
+
+services:
+  spheroSpeech:
+    start: spheroSpeech
+    security-template: unconfined
+
+parts:
+  sensory:
+    plugin: make
+    source: .
+build-packages: [libasound2-dev]
