@@ -1,0 +1,45 @@
+::Name
+Command: Home Automation Demo v2.1 (US English)
+
+::Vocabulary
+turn on the light
+turn the light off
+turn on the air conditioning
+turn the air conditioning off
+open garage door
+close garage
+whats the temperature
+kitchen PAUSE turn on light
+kitchen PAUSE turn the light off
+
+::Sensitivity
+Sensitivity: Reject Most
+Sensitivity: Reject Many
+Sensitivity: Reject More
+Sensitivity: Normal
+Sensitivity: Accept More
+Sensitivity: Accept Many
+Sensitivity: Accept Most
+
+::Search
+sy_home_auto2_home_auto2_en_US_sfs14_delivery01_search_5.raw
+sy_home_auto2_home_auto2_en_US_sfs14_delivery01_search_7.raw
+sy_home_auto2_home_auto2_en_US_sfs14_delivery01_search_9.raw
+sy_home_auto2_home_auto2_en_US_sfs14_delivery01_search_12.raw
+sy_home_auto2_home_auto2_en_US_sfs14_delivery01_search_13.raw
+sy_home_auto2_home_auto2_en_US_sfs14_delivery01_search_14.raw
+sy_home_auto2_home_auto2_en_US_sfs14_delivery01_search_15.raw
+
+::Net
+sy_home_auto2_home_auto2_en_US_sfs14_delivery01_am.raw
+
+::Commands
+turn_on_the_light|Turn On The Light|Light On
+turn_the_light_off|Turn The Light Off|Light Off
+turn_on_the_air_conditioning|Turn On The Air Conditioning|AC On
+turn_the_air_conditioning_off|Turn The Air Conditioning Off|AC Off
+open_garage_door|Open Garage Door|Opening Garage Door
+close_garage|Close Garage|Closing Garage
+whats_the_temperature|What's The Temperature|74 Degrees
+kitchen_turn_on_light|Kitchen Turn On Light|Kitchen Light On 
+kitchen_turn_the_light_off|Kitchen Turn The Light Off|Kitchen Light Off
