@@ -18,8 +18,8 @@ last-include-dir = $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 
 SAMPLE_DATA_DIR = $(abspath $(last-include-dir)/Data)
 SHARED_DIR      = $(abspath $(last-include-dir)/shared)
-SDK_INC_DIR     = $(abspath $(last-include-dir)/sdk-x86/include)
-SDK_LIB_DIR     = $(abspath $(last-include-dir)/sdk-x86/lib)
+SDK_INC_DIR     = $(abspath $(last-include-dir)/sdk-armhf/include)
+SDK_LIB_DIR     = $(abspath $(last-include-dir)/sdk-armhf/lib)
 
 CFLAGS  += -I$(SHARED_DIR) -I$(SDK_INC_DIR) -DDATADIR_SAMP=$(SAMPLE_DATA_DIR)
 LDFLAGS += -L$(SDK_LIB_DIR)

@@ -92,7 +92,7 @@ int main(int argc, char **argv)
   pronuns_t *pp=NULL;
   char str[MAXSTR];
   const char *ewhere, *ewhat=NULL;
-  float score, delay;
+  float score;
   unsigned short status, done=0;
   audiol_t *p;
   unsigned short i=0;
@@ -133,17 +133,23 @@ int main(int argc, char **argv)
 	formatExpirationDate(thfGetLicenseExpiration()));
 
   disp(cons,"Loading recognizer: "  SPHERO_NETFILE);
-  if(!(r=thfRecogCreateFromFile(ses, SPHERO_NETFILE,(unsigned short)(AUDIO_BUFFERSZ/1000.f*SAMPLERATE),-1,NO_SDET)))
+  if(!(r=thfRecogCreateFromFile(ses, SPHERO_NETFILE,0xfffff, 0xffff, NO_SDET)))
     THROW("thfRecogCreateFromFile");
 
   dispv(cons,"Using custom search: %s\n", speechRecognitionInput);
   if(!(s=thfSearchCreateFromFile(ses,r,speechRecognitionInput,NBEST)))
     THROW("thfSearchCreateFromFile");
 
+
+  /* Initialize recognizer */
+  disp(cons,"Initializing recognizer...");
+
+  if(!thfRecogInit(ses,r,s,RECOG_KEEP_WAVE_WORD_PHONEME))
+    THROW("thfRecogInit");
+
   /* Configure parameters - only DELAY... others are saved in search already */
   disp(cons,"Setting parameters...");
-  delay=PHRASESPOT_DELAY;
-  if (!thfPhrasespotConfigSet(ses,r,s,PS_DELAY,delay))
+  if (!thfPhrasespotConfigSet(ses,r,s,PS_DELAY,PHRASESPOT_DELAY))
     THROW("thfPhrasespotConfigSet: delay");
 
   // One second sequential buffer
@@ -154,11 +160,6 @@ int main(int argc, char **argv)
     THROW("Acoustic model is incompatible with audio samplerate");
 
 
-  /* Initialize recognizer */
-  disp(cons,"Initializing recognizer...");
-
-  if(!thfRecogInit(ses,r,s,RECOG_KEEP_WAVE_WORD_PHONEME))
-    THROW("thfRecogInit");
 
   /* initialize a speaker object with a single speaker,
    * and arbitrarily set it up
