@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-#define AUDIO_BUFFERSZ 250
+#define AUDIO_BUFFERSZ 128
 #define SAMPLERATE 16000
 #define NUMCHANNELS 1
 
