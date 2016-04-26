@@ -133,7 +133,7 @@ int main(int argc, char **argv)
 	formatExpirationDate(thfGetLicenseExpiration()));
 
   disp(cons,"Loading recognizer: "  SPHERO_NETFILE);
-  if(!(r=thfRecogCreateFromFile(ses, SPHERO_NETFILE,0xfffff, 0xffff, NO_SDET)))
+  if(!(r=thfRecogCreateFromFile(ses, SPHERO_NETFILE, (unsigned short)(AUDIO_BUFFERSZ/1000.f*SAMPLERATE), -1, NO_SDET)))
     THROW("thfRecogCreateFromFile");
 
   dispv(cons,"Using custom search: %s\n", speechRecognitionInput);
